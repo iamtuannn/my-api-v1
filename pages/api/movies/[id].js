@@ -1,4 +1,5 @@
 import dbConnect from '../../../lib/dbConnect'
+import cors from '../../../lib/cors'
 import Movie from '../../../models/Movie'
 
 export default async function handler(req, res) {
@@ -6,6 +7,8 @@ export default async function handler(req, res) {
     query: { id },
     method,
   } = req
+
+  await cors(req, res)
 
   await dbConnect()
 
